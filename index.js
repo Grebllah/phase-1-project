@@ -29,7 +29,7 @@ const addClasses = async() => {
 }
 
 let spellObj = {}
-let excludedItems = ["classes", "higher_level", "index", "school", "subclasses", "url", "damage", "dc"]
+let excludedItems = ["index", "url", "classes", "subclasses"]
 
 const extractObjInfo = (obj, parent) => {
     const infoObj = Object.entries(obj)
@@ -64,6 +64,7 @@ const spellLookup = async (e) => {
 }
 
 const filterSpell = async (spell) => {
+    //fetches the clicked on spell, and compares the level of the spell the level in the levelDropdown
     const spellURL = `https://www.dnd5eapi.co/api/spells/${spell}`
     const response = await fetch(spellURL)
     const data = await response.json()
@@ -95,6 +96,8 @@ const changeClass = async (e) => {
         //console.log(data)
         const profs = data.proficiencies
         const equipment = data.starting_equipment
+        //extract the data, and create a section for proficiencies and spells and equipment
+
         const profsHeader = document.createElement("h3")
         classDescript.appendChild(profsHeader).innerText= `This is the ${classes}'s proficiencies`
         profs.forEach(prof => {
@@ -112,13 +115,14 @@ const changeClass = async (e) => {
         })
         
         if (data.spells) {
-            const spellsParagraph = document.createElement("h3")
+            //the spell list requires another fetch request
+            const spellsHeader = document.createElement("h3")
             const spellResponse = await fetch (`https://www.dnd5eapi.co/api/classes/${classes}/spells`)
             const spellData = await spellResponse.json()
             // console.log(spellData)
             const spells = spellData.results
             //console.log(spells)
-            classSpells.appendChild(spellsParagraph).innerText= `This is the ${classes}'s spell-list`
+            classSpells.appendChild(spellsHeader).innerText= `This is the ${classes}'s spell-list`
             spells.forEach(async spell => {
                 //console.log(spell)
                 const spellIndex = spell.index
