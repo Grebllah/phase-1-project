@@ -8,8 +8,9 @@
 </head>
 <body>
     <div id="bodyDiv">
-        <form>
-            <button id="classButton">submit</button>
+        <p>Welcome to the Dnd 5e character helper! Select your character's class and highest spell slot available and click 'submit' to view your character's available proficiencies, equipment, and, if available, spells! Feel free to click on any spells to summon an info box displaying helpful information about the spell to help you choose which spells to use!</p>
+        <form id="classForm">
+            <button type="submit" id="classButton">submit</button>
             <label for="classdropdown">Select your class</label>
             <select name="Class" id="classDropdown">
                 <option value="">--</option>
@@ -17,7 +18,7 @@
 
             <label for="levelDropdown">Select your highest level spell slot</label>
             <select name="Level" id="levelDropdown">
-                <option value="0">**</option>
+                <option value="0">0 (cantrips)</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -40,7 +41,8 @@
             <ul id="equipList"></ul>
         </p>
         <p id="spellDescript"></p>
-        <p id="spellCard"></p>
+        <p id="spellCard">
+        </p>
     </div>
 <script src="index.js"></script>    
 </body>

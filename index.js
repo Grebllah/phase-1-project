@@ -1,7 +1,7 @@
 const classList = document.querySelector("#classDropdown")
 const levels = document.querySelector("#levelDropdown")
 const classDescript = document.querySelector("#classDescription")
-const classButton = document.querySelector("#classButton")
+const classForm = document.querySelector("#classForm")
 const classSpellList = document.querySelector("#classSpellList")
 const classSpells = document.querySelector("#classSpells")
 const profList = document.querySelector("#profList")
@@ -53,8 +53,10 @@ const extractObjInfo = (obj, parent) => {
 
 const spellLookup = async (e) => {
     spellCard.innerHTML = ""
+    const spellListHeader = document.createElement("h3")
     spellObj = {}
     const spellName = e.srcElement.innerText.replace(/\s+/g, '-').toLowerCase();
+    spellCard.appendChild(spellListHeader).innerText = e.srcElement.innerText
     spellURL = `https://www.dnd5eapi.co/api/spells/${spellName}`
     //console.log(spellURL)
     const response = await fetch(spellURL)
@@ -79,10 +81,10 @@ const filterSpell = async (spell) => {
 }
 
 const changeClass = async (e) => {
+    e.preventDefault()
     //when the submit button is clicked, the class information is fetched and extracted
     spellCard.innerHTML = ""
     if (classList.value !==""){
-        e.preventDefault()
         classDescript.innerText = ""
         classSpells.innerText = ""
         equipList.innerText = ""
@@ -99,14 +101,14 @@ const changeClass = async (e) => {
         //extract the data, and create a section for proficiencies and spells and equipment
 
         const profsHeader = document.createElement("h3")
-        classDescript.appendChild(profsHeader).innerText= `This is the ${classes}'s proficiencies`
+        classDescript.appendChild(profsHeader).innerText= `These are the ${classes}'s proficiencies`
         profs.forEach(prof => {
             const proficiency = document.createElement("li")
             const name = prof.index
             profList.appendChild(proficiency).innerText= name
         })
         const equipmentParagraph = document.createElement("h3")
-        equip.appendChild(equipmentParagraph).innerText= `This is the ${classes}'s starting equipment`
+        equip.appendChild(equipmentParagraph).innerText= `These are the ${classes}'s starting equipment`
         equipment.forEach(gear => {
             // console.log(gear)
             const gearPiece = document.createElement("li")
@@ -122,7 +124,7 @@ const changeClass = async (e) => {
             // console.log(spellData)
             const spells = spellData.results
             //console.log(spells)
-            classSpells.appendChild(spellsHeader).innerText= `This is the ${classes}'s spell-list`
+            classSpells.appendChild(spellsHeader).innerText= `These are the ${classes}'s available spells`
             spells.forEach(async spell => {
                 //console.log(spell)
                 const spellIndex = spell.index
@@ -145,4 +147,4 @@ const changeClass = async (e) => {
 }
 const spell = document.querySelector(".spell")
 document.addEventListener("DOMContentLoaded", addClasses())
-classButton.addEventListener("click", changeClass)
+classForm.addEventListener("submit", changeClass)

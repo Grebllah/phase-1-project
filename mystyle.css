@@ -1,6 +1,64 @@
 p {
     background-color: burlywood;
+    border-right: 1px;
+    width: 550px;
 }
 li {
-    border: .05px solid black
+    margin-top:10px;
+    border: .05px solid black;
+    width: 200px;
+    padding-right: 15px;
+    background-color: burlywood;
+}
+ul {
+    margin-top:10px;
+    width: 200px;
+    padding-right: 15px;
+    background-color: burlywood;
+}
+form {
+    background-color: burlywood;
+}
+.spell{
+    border: .05px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    padding-left: 15px;
+    cursor: pointer;
+}
+.spell:hover{
+    background-color: rgb(211, 145, 59);
+    color: white;
+}
+
+#classSpellList{
+    width: max-content;
+}
+#bodyDiv{
+    width:max-content;
+    margin: auto;
+}
+h3{
+    width:fit-content;
+    height:fit-content;
+}
+#spellCard{
+    background-color: rgb(179, 104, 7);
+}
+#spellCard li{
+    position: relative;
+    background-color: rgb(179, 104, 7);
+    color: burlywood;
+    left: 5%;
+    font-size: 1.3em;
+}
+#spellCard ul{
+    background-color: rgb(179, 104, 7);
+    color: burlywood;
+    font-size: 1.3em;
+}
+#spellCard h3{
+    background-color: rgb(179, 104, 7);
+    color: burlywood;
+    font-size: 1.35em;
 }
