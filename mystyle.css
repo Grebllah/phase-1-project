@@ -6,6 +6,7 @@ p {
 li {
     margin-top:10px;
     border: .05px solid black;
+    border-radius: 5px;
     width: 200px;
     padding-right: 15px;
     background-color: burlywood;
@@ -50,15 +51,13 @@ h3{
     background-color: rgb(179, 104, 7);
     color: burlywood;
     left: 5%;
-    font-size: 1.3em;
 }
 #spellCard ul{
     background-color: rgb(179, 104, 7);
     color: burlywood;
-    font-size: 1.3em;
 }
 #spellCard h3{
     background-color: rgb(179, 104, 7);
     color: burlywood;
-    font-size: 1.35em;
+
 }
