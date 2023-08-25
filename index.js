@@ -123,6 +123,5 @@ const changeClass = async (e) => {
         }
     }
 }
-const spell = document.querySelector(".spell")
 document.addEventListener("DOMContentLoaded", addClasses())
 classForm.addEventListener("submit", changeClass)
